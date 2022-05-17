@@ -20,6 +20,5 @@ module.exports = {
         path: path.join(__dirname, './dist'), //输出文件的存放路径。
         filename: 'bundle.js'
     },
-    pulgins: [htmlPlugin], //3.通过plugins节点，使用hmltPlugin插件生效。
-
+    plugins: [htmlPlugin], //3.通过plugins节点，使用hmltPlugin插件生效。
 }
