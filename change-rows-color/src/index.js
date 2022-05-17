@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 $(function(){
   // 奇数行为红色 green yellow
-  $('li:odd').css('background-color', 'red');
+  $('li:odd').css('background-color', 'green');
   $('li:even').css('background-color', 'blue');
 
   // 0 是偶数
