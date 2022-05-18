@@ -2,7 +2,7 @@
 
 ## 01.vue初体验
 
-1.vue内容编写在 <script/>标签内。
+1.vue内容编写在script标签内。
 2.格式为new Vue({....})
 3.data后有冒号，非方法名。
 4.el后面内容均为单引号，且带逗号。
@@ -27,7 +27,7 @@
 
 1. v-on 简写@
 2. methods后不需要带冒号。
-3. 原生事件@click @input @keyup
+3. 原生事件@click @input @keyup @change
 
 ## 05.事件参数对象
 
@@ -41,3 +41,10 @@
 ## 07.按钮修饰符
 
 1. 可监听esc\enter事件。
+
+## 08.双向绑定指令
+
+1. v-model双向绑定指令。
+2. change事件。
+3. [原生事件](https://www.cnblogs.com/yuanjili666/p/11648898.html)
+4. 遗留问题：想通过e对象获取到选中的值，未实现。 

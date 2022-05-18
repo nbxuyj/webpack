@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <p>用户的名字是：{{ username }}</p>
+        <!-- v-model双向数据绑定指定 -->
+        <input type="text" v-model="username">
+        <hr>
+        <input type="text" :value="username">
+        <p>选中的城市：{{cityname}}</p>
+        <hr>
+        <select v-model="city" @change="change($event) " ref="select">
+            <option value="">请选择城市</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">广州</option>
+        </select>
+
+
+
+
+
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                username: 'zhangsan',
+                city: '3',
+                cityname: '',
+             
+            },
+            methods: {
+
+                change(e) {
+                    //遗留问题：想通过e对象获取到选中的值，未实现。 2022.05.18。
+                    this.cityname = e.target.value;
+                    console.log(e);
+                    console.log('change执行');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
