@@ -47,4 +47,10 @@
 1. v-model双向绑定指令。
 2. change事件。
 3. [原生事件](https://www.cnblogs.com/yuanjili666/p/11648898.html)
-4. 遗留问题：想通过e对象获取到选中的值，未实现。 
+4. 遗留问题：想通过e对象获取到选中的值，未实现。
+
+## 09.v-model修饰符
+
+1. v-model.number 自动将输入内容转换为数值类型。
+2. trim 自动过滤用户首尾空格。
+3. lazy 在change 非input.
