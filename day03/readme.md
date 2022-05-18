@@ -8,3 +8,7 @@
 
 1. Vue.filter单词写错。
 2. 品牌列表案例完善
+
+## 03.watch侦听器
+
+Property or method "username" is not defined on the instance but referenced during 
