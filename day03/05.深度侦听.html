@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" v-model="info.username">
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script src="./lib/jquery-v3.6.0.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+                info: {
+                    username: 'admin'
+                }
+
+            },
+            // 所有的侦听器，都应该被定义到 watch 节点下
+            watch: {
+
+
+                // info(p1){
+                //     //属性值发生变化不会触发。
+
+                // }
+
+                // info: {
+                //     handler(newVal, oldVal) {
+                //         console.log(newVal, oldVal)
+                //     },
+                //     immediate: true,
+                //     //开启深度侦听
+                //     deep:true
+                // },
+
+                // 如果要侦听的是对象的子属性的变化，则必须包裹一层单引号
+                'info.username'(newVal) {
+                    console.log(newVal)
+                }
+
+
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>
