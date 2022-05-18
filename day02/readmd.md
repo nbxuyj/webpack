@@ -54,3 +54,9 @@
 1. v-model.number 自动将输入内容转换为数值类型。
 2. trim 自动过滤用户首尾空格。
 3. lazy 在change 非input.
+
+## 品牌列表案例
+
+1. :与v-model区别
+答复：属性绑定用：,v-model双向绑定。
+

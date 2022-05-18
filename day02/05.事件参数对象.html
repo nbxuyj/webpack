@@ -11,6 +11,9 @@
 <body>
     <div id='app'>
         <p>count 的值是：{{ count }}</p>
+        <!-- 如果 count 是偶数，则 按钮背景变成红色，否则，取消背景颜色 -->
+        <!-- <button @click="add">+N</button> -->
+        <!-- vue 提供了内置变量，名字叫做 $event，它就是原生 DOM 的事件对象 e -->
         <button @click="add($event, 1)">+N</button>
     </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
@@ -19,7 +22,7 @@
         var vm = new Vue({
             el: '#app',
             data: {
-                count:0
+                count: 0
             },
             methods: {
                 add(e, n) {
