@@ -32,3 +32,8 @@
 ## 05.事件参数对象
 
 1. 可以传入原生dom对象 $event，使用方法e.target.style.backgroundColor = 
+
+## 06.事件修饰符
+
+1. 可用@click.stop='' 来阻止事件冒泡。
+2. @click.prevent='' 阻止a链接跳转。
