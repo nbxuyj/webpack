@@ -58,15 +58,16 @@
                     <td>
 
                         <div class="custom-control custom-switch">
-                                <!-- :表示绑定 -->
-                            <input type="checkbox" class="custom-control-input" :id="'cb'+item.id" v-model="item.status">
+                            <!-- :表示绑定 -->
+                            <input type="checkbox" class="custom-control-input" :id="'cb'+item.id"
+                                v-model="item.status">
                             <!-- 使用 v-if 结合 v-else 实现按需渲染 -->
                             <label class="custom-control-label" :for="'cb' + item.id" v-if="item.status">已启用</label>
                             <label class="custom-control-label" :for="'cb' + item.id" v-else>已禁用</label>
-                          </div>
+                        </div>
 
                     </td>
-                    <td>{{ item.time }}</td>
+                    <td>{{ item.time |dateFormat }}</td>
                     <td><a href="javascript:;" @click="remove(item.id)">删除</a>
                     </td>
                 </tr>
@@ -78,38 +79,58 @@
     </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script src="./lib/dayjs.min.js"></script>
     <script>
+        Vue.filter('dateFormat', function (time) {
+            const dtStr = dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+            return dtStr
+        })
+
         var vm = new Vue({
             el: '#app',
             data: {
-                brand:'',
-                nextId:4,
-                list:[
-                    { id: 1, name: '宝马', status: true, time: new Date() },
-                    { id: 2, name: '奔驰', status: false, time: new Date() },
-                    { id: 3, name: '奥迪', status: true, time: new Date() },
+                brand: '',
+                nextId: 4,
+                list: [{
+                        id: 1,
+                        name: '宝马',
+                        status: true,
+                        time: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: '奔驰',
+                        status: false,
+                        time: new Date()
+                    },
+                    {
+                        id: 3,
+                        name: '奥迪',
+                        status: true,
+                        time: new Date()
+                    },
                 ]
 
             },
             methods: {
                 //点击链接，删除对应的品牌信息。
-                remove(id){
-                    this.list=this.list.filter(item=>item.id!==id)
+                remove(id) {
+                    this.list = this.list.filter(item => item.id !== id)
                 },
                 //阻止表单的默认提交行为之后，触发add方法。
                 add() {
                     //如果判断到brand
-                    if(this.brand=='') return alert('必须填写品牌名称!')
+                    if (this.brand == '') return alert('必须填写品牌名称!')
 
                     const obj = {
-                    id: this.nextId,
-                    name: this.brand,
-                    status: true,
-                    time: new Date()
+                        id: this.nextId,
+                        name: this.brand,
+                        status: true,
+                        time: new Date()
                     }
 
                     this.list.push(obj)
-                    this.brand=''
+                    this.brand = ''
                     this.nextId++
 
 
