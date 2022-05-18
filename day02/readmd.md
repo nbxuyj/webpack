@@ -37,3 +37,7 @@
 
 1. 可用@click.stop='' 来阻止事件冒泡。
 2. @click.prevent='' 阻止a链接跳转。
+
+## 07.按钮修饰符
+
+1. 可监听esc\enter事件。
