@@ -20,3 +20,19 @@
 ## 09.侦听器 - 用法总结
 
 1. 如果要求侦听属性。需要对象属性名加引号。 例如： 'info.username'
+
+## 10.计算属性 - 了解计算属性的应用场景
+
+ 1. 使用符号：`
+ 2. 示例：return `rgb(${this.r}, ${this.g}, ${this.b})`
+
+## 12.axios - 使用axios发起基本的GET请求
+
+ 1. axios只负责发送网络请求。
+
+## 13 axios结合
+
+1. 调用 axios 之后，使用 async/await 进行简化
+2. 使用 async/await 进行简化.
+
+## vue-cli介绍与安装

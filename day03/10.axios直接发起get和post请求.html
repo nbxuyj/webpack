@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id='app'>
+        <button @click="axiosPost">发起Post请求</button>
+        <button @click="axiosget">发起Get请求</button>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script src="./lib/axios.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                async axiosPost() {
+                 const {data:res}=  await axios.post('http://www.liulongbin.top:3006/api/post',{name:'zs',getder:'女'}) 
+                 console.log(res)
+                },
+                async axiosget() {
+                 const {data}= await axios.get('http://www.liulongbin.top:3006/api/getbooks',{ param:{id:'1'}}) 
+                 console.log(data)
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

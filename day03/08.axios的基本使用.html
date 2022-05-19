@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/axios.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script>
+        console.log(axios)
+
+        //返回的是promise对象。
+       axios({
+            // 请求方式
+            method: 'GET',
+            // 请求的地址
+            url: 'http://www.liulongbin.top:3006/api/getbooks',
+            // URL 中的查询参数
+            params: {
+                id: 1
+            },
+            // 请求体参数
+            data: {}
+        }).then(function (result) {
+            console.log(result.data)
+        })
+
+
+
+
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        })
+    </script>
+</body>
+
+</html>
