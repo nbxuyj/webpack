@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./lib/axios.js"></script>
+
+<body>
+    <div id='app'>
+
+        <button @click="axiosPost">发起Post字符串请求</button>
+        <button @click="axiosPost2">发起Post字符串简写</button>
+        <button @click="axiosPost3">发起Post字符串简写</button>
+
+
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+
+                async axiosPost() {
+                    /*
+                    小结：要增加Content-Type为application/json.
+                    */
+                    axios({
+                        method: 'Post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: 'http://localhost:13827/api/values/post',
+                        data: JSON.stringify("zs")
+                    }).then(p => {
+                        console.log(p);
+                        alert(p);
+
+                    });
+                },
+                async axiosPost2() {
+
+                    const {
+                        data:res
+                    } = await axios({
+                        method: 'Post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: 'http://localhost:13827/api/values/post',
+                        data: JSON.stringify("zs")
+                    })
+                    console.log(res);
+                    alert(res);
+                },
+
+                async axiosPost3() {
+
+                    const {
+                        data
+                    } = await axios({
+                        method: 'Post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: 'http://localhost:13827/api/values/post',
+                        data: JSON.stringify("zs")
+                    })
+                    console.log(data)
+                    alert(data)
+
+                }
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -30,9 +30,24 @@
 
  1. axios只负责发送网络请求。
 
+
 ## 13 axios结合
 
 1. 调用 axios 之后，使用 async/await 进行简化
 2. 使用 async/await 进行简化.
 
 ## vue-cli介绍与安装
+
+1. 创建项目：vue create demo-frist
+2. Babel 一定要装、TypeScrip 微软不选，Linter不选。
+3. Sass/Scss选择Less.
+4. Bable包选择单独文件还是合并到package.json中。
+5. 保存后，在下载创建项目时可以选择指定的模板名称。
+
+## 回顾get请求
+
+1. params参数名不要写错。
+2. 采用async/await简写时，const {data}  其中的data为返回串中的内容，不能用其它变量，可通过{data:res}来重命名。
+3. then用起来麻烦。
+4. 加上await则返回真实数据。
+5. 如果传参，直接对象传，不通过JSON.stringify转换，则Content-Type 不需要指定。

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./lib/axios.js"></script>
+
+<body>
+    <div id='app'>
+
+
+        <button @click="axiospostFromBodyMul">发起PostFromBody对象转换</button>
+        <button @click="axiospostFromBodyObj">发起PostFromBody对象</button>
+        <button @click="axiospostURL">发起PostFromURL</button>
+        <button @click="ajaxPost">ajaxPost</button>
+
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+
+             
+
+                async axiospostFromBodyMul() {
+                    //6.Post传参数，如果指定  'Content-Type': 'application/json'，则对象必须要通过JSON.stringify转换
+                    var dp = {
+                        id: "11",
+                        name: "zs"
+                    }
+                    axios({
+                        method: 'Post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: 'http://localhost:13827/api/values/postmul',
+                        data:JSON.stringify(dp)
+                    }).then(p => {
+
+                        console.log(p);
+                    })
+
+                },
+                async axiospostFromBodyObj() {
+                    //5. 如果传参，直接对象传，不通过JSON.stringify转换，则Content-Type 不需要指定。
+                    var dp = {
+                        id: "11",
+                        name: "zs"
+                    }
+                    axios({
+                        method: 'Post',
+                        url: 'http://localhost:13827/api/values/postmul',
+                        data:dp
+                    }).then(p => {
+
+                        console.log(p);
+                    })
+
+                },
+
+
+                async axiospostURL() {
+                    var dp = {
+                        id: "11",
+                        name: "zs"
+                    }
+
+                    const {
+                        data
+                    } = await axios.post('http://localhost:13827/api/values/posturl', dp)
+                    alert(data)
+                },
+
+                ajaxPost() {
+                    $.ajax({
+                        type: 'post',
+                        url: 'http://localhost:13827/api/values/post',
+                        data: {
+                            '': '张三'
+                        },
+                        success: function (data) {
+                            window.alert(data);
+                        }
+                    })
+
+                },
+        
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>

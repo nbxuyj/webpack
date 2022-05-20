@@ -13,25 +13,153 @@
     <div id='app'>
         <button @click="axiosPost">发起Post请求</button>
         <button @click="axiosget">发起Get请求</button>
+        <button @click="axiospostFromBody">发起PostFromBody</button>
+        <button @click="axiospostFromBodyMul">发起PostFromBody多参</button>
+        <button @click="axiospostURL">发起PostFromURL</button>
+        <button @click="ajaxPost">ajaxPost</button>
     </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src='http://pub.nbangsoft.com/ref/vue-2.6.12.js'></script>
     <script src="./lib/axios.js"></script>
+    <script src="./lib/jquery-v3.6.0.js"></script>
     <script>
+        // $.ajax({
+        //         type: 'post',
+        //         url: 'https://localhost:44399/api/User/GetUserInfo',
+        //         data: {
+        //             '': '张三'
+        //         },
+        //         success: function (data) {
+        //             window.alert(data);
+        //         }
+        //     })
+
+
+
         var vm = new Vue({
-            el: '#app',
+            // el: '#app',
             data: {},
             methods: {
                 async axiosPost() {
-                 const {data:res}=  await axios.post('http://www.liulongbin.top:3006/api/post',{name:'zs',getder:'女'}) 
-                 console.log(res)
+                    const {
+                        data: res
+                    } = await axios.post('http://www.liulongbin.top:3006/api/post', {
+                        name: 'zs',
+                        getder: '女'
+                    })
+                    console.log(res)
                 },
                 async axiosget() {
-                 const {data}= await axios.get('http://www.liulongbin.top:3006/api/getbooks',{ param:{id:'1'}}) 
-                 console.log(data)
+                    const {
+                        data
+                    } = await axios.get('http://www.liulongbin.top:3006/api/getbooks', {
+                        param: {
+                            id: '1'
+                        }
+                    })
+                    console.log(data)
+                },
+                // async axiospostFromBody() {
+                //  const {data}= await axios.post('http://localhost:13827/api/values/post',{'':'444444'})
+                //  alert(data)
+                // },
+
+
+                async axiospostFromBody() {
+                    // const {
+                    //     data
+                    // } = await axios({
+                    //     method: 'Post',
+                    //     headers: {
+                    //         'Content-Type': 'application/json'
+                    //     },
+                    //     url: 'http://localhost:13827/api/values/post',
+                    //     data: JSON.stringify("zs")
+                    // })
+                    // console.log(data)
+                    // alert(data)
+
+
+                    //第二种方法 ：
+                    axios({
+                        method: 'Post',
+                        headers: {'Content-Type': 'application/json'},
+                        url: 'http://localhost:13827/api/values/post',
+                        data: JSON.stringify("zs")
+                    }).then(p=>{
+                            console.log(p);
+                           alert(p);
+                           
+                        });
+
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                },
+                async axiospostFromBodyMul() {
+                    //headers: {'Content-Type': 'application/json' }
+                    var dp = {
+                        id: "11",
+                        name: "zs"
+                    }
+                    axios({
+                        method: 'Post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        url: 'http://localhost:13827/api/values/postmul',
+                        dp
+                    }).then(p=>{
+
+                       console.log(p);
+                    })
+                  
+                },
+
+
+
+                async axiospostURL() {
+                    let dp = {
+                        id: "11",
+                        name: "zs"
+                    }
+
+                    const {
+                        data
+                    } = await axios.post('http://localhost:13827/api/values/posturl', dp)
+                    alert(data)
+                },
+
+                ajaxPost() {
+                    $.ajax({
+                        type: 'post',
+                        url: 'http://localhost:13827/api/values/post',
+                        data: {
+                            '': '张三'
+                        },
+                        success: function (data) {
+                            window.alert(data);
+                        }
+                    })
+
                 },
             }
         })
+
+        vm.$mount('#app')
     </script>
 </body>
 

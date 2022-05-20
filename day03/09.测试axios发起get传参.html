@@ -12,8 +12,8 @@
 <body>
     <div id='app'>
 
-        <button @click="axiosPost">发起Post请求</button>
-        <button @click="axiosGet">发起Get请求</button>
+        <button @click="axiosGet">发起Get无参请求</button>
+        <button @click="axiosGetParam">发起Get有参请求</button>
 
     </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
@@ -23,19 +23,7 @@
             el: '#app',
             data: {},
             methods: {
-                async axiosPost() {
-                    const {
-                        data: res
-                    } = await axios({
-                        method: 'Post',
-                        url: 'http://www.liulongbin.top:3006/api/post',
-                        data: {
-                            name: 'ls1111',
-                            age: 20
-                        }
-                    })
-                    console.log(res)
-                },
+
                 async axiosGet() {
 
                     //解构赋值的时候，使用 : 进行重命名
@@ -46,7 +34,17 @@
                         data: res
                     } = await axios({
                         method: 'GET',
-                        url: 'http://www.liulongbin.top:3006/api/getbooks'
+                        url: 'http://localhost:13827/api/values/get'
+                    })
+                    console.log(res)
+                },
+                async axiosGetParam() {
+                    const {
+                        data: res
+                    } = await axios({
+                        method: 'GET',
+                        url: 'http://localhost:13827/api/values/get',
+                        params:{id:1}
                     })
                     console.log(res)
                 }
