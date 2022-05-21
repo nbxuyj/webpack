@@ -48,6 +48,6 @@
 
 1. params参数名不要写错。
 2. 采用async/await简写时，const {data}  其中的data为返回串中的内容，不能用其它变量，可通过{data:res}来重命名。
-3. then用起来麻烦。
-4. 加上await则返回真实数据。
-5. 如果传参，直接对象传，不通过JSON.stringify转换，则Content-Type 不需要指定。
+3. then用起来麻烦, 加上await则返回真实数据。
+4. 如果传参，直接对象传，不通过JSON.stringify转换，则Content-Type 不需要指定。
+5. Post传参数，如果指定  'Content-Type': 'application/json'，则对象必须要通过JSON.stringify转换

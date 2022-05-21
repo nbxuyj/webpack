@@ -83,31 +83,16 @@
                     //第二种方法 ：
                     axios({
                         method: 'Post',
-                        headers: {'Content-Type': 'application/json'},
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
                         url: 'http://localhost:13827/api/values/post',
                         data: JSON.stringify("zs")
-                    }).then(p=>{
-                            console.log(p);
-                           alert(p);
-                           
-                        });
+                    }).then(p => {
+                        console.log(p);
+                        alert(p);
 
-
-                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    });
                 },
                 async axiospostFromBodyMul() {
                     //headers: {'Content-Type': 'application/json' }
@@ -122,11 +107,11 @@
                         },
                         url: 'http://localhost:13827/api/values/postmul',
                         dp
-                    }).then(p=>{
+                    }).then(p => {
 
-                       console.log(p);
+                        console.log(p);
                     })
-                  
+
                 },
 
 
