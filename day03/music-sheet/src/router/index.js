@@ -14,7 +14,10 @@ VueRouter.prototype.push = function push(location) {
 //因为VueRouter是一个插件需要Use。
 Vue.use(VueRouter)
 
-
+Vue.filter("dateFormat", function (time) {
+  const dtStr = dayjs(time).format("YYYY-MM-DD HH:mm:ss");
+  return dtStr;
+});
 
 
 
@@ -22,6 +25,8 @@ Vue.use(VueRouter)
 import Show from "../pages/Show.vue";
 import Upload from "../pages/Upload.vue";
 import Find from "../pages/Find.vue";
+import ShowDetail from "../pages/ShowDetail.vue";
+
 
 
 
@@ -50,7 +55,13 @@ export default new VueRouter({
       component: Upload
 
     },
-   
+    {
+      //请求路由的路径
+      path: '/showdetail',
+      //当前路由的组件。
+      component: ShowDetail
+
+    },
 
   ]
 
