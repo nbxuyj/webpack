@@ -4,8 +4,16 @@
       :data="tableData"
       style="width: 100%"
       :row-class-name="tableRowClassName"
+      @row-click="rowClick"
     >
+
+
+
+
+
       <el-table-column prop="ModifyTime" label="日期"> </el-table-column>
+  
+
       <el-table-column prop="GqName" label="歌名"> </el-table-column>
       <el-table-column prop="GsName" label="歌手"> </el-table-column>
       <el-table-column label="操作">
@@ -43,6 +51,14 @@ export default {
     return {};
   },
   methods: {
+    rowClick(row)
+    {
+     console.log("row:" + row);
+     this.$router.push({
+        path: "/showdetail",
+        query: { id: row.Filepath },
+      });
+    },
     handleClick(index, rows) {
       console.log("row[index]:" + rows[index].Filepath);
       this.$router.push({
