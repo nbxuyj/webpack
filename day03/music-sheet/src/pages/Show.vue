@@ -89,7 +89,6 @@ export default {
             },
             data: JSON.stringify(rows[index].Guid),
           }).then((p) => {
-            this.$message("保存成功！");
             this.$router.push({ path: "/find" });
           });
 

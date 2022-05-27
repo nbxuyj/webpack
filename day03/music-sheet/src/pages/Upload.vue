@@ -67,8 +67,11 @@ export default {
         url: "/api/musicsheet/post",
         data: dp,
       }).then((p) => {
-         this.$message('保存成功！');
-         this.$router.push({ path: "/find" });
+         this.$message('Post保存成功！');
+         //this.$router.push({ path: "/find" });
+         this.form.gqName="";
+         this.form.gsName="";
+         this.form.fileName="";
         
       });
     },
