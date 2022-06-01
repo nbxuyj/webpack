@@ -8,7 +8,7 @@
 ## 组件基本使用
 
 1. 需求：用户自定义test.
-2. $mount作用与el属性作业相同.
+2. $mount作用与el属性作用相同.
 3. 测试替换el用$mount 示例：vm.$mount('#app')
 
 ## 组件的三个组成部分
@@ -19,3 +19,6 @@
 ## 24. 组件中定义mothods
 
 1. 在template中有div.
+2. watch功能未测试。
+
+## 25.vue组件 - 启用less语法以及唯一根节点
