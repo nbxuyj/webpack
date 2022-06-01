@@ -6,39 +6,40 @@
       :row-class-name="tableRowClassName"
       @row-click="rowClick"
     >
-
-
-
-
-
       <el-table-column prop="ModifyTimeStr" label="日期"> </el-table-column>
-  
 
       <el-table-column prop="GqName" label="歌名"> </el-table-column>
       <el-table-column prop="GsName" label="歌手"> </el-table-column>
+
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button
-            @click="handleClick(scope.$index, tableData)"
-            type="text"
-            size="small"
+          <el-button size="mini" @click="handleClick(scope.$index, tableData)"
             >查看</el-button
           >
-          <el-button
-            @click="editClick(scope.$index, tableData)"
-            type="text"
-            size="small"
+          <el-button size="mini" @click="editClick(scope.$index, tableData)"
             >编辑</el-button
           >
           <el-button
+            size="mini"
+            type="danger"
             @click.stop="deleteClick(scope.$index, tableData)"
-            type="text"
-            size="small"
             >删除</el-button
           >
         </template>
       </el-table-column>
     </el-table>
+ <el-switch v-model="value">
+ </el-switch>
+<el-pagination
+      :hide-on-single-page="value"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page.sync="currentPage2"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="sizes, prev, pager, next"
+      :total="1">
+    </el-pagination>
   </div>
 </template>
 
@@ -48,13 +49,16 @@ export default {
   props: ["tableData"],
   components: {},
   data() {
-    return {};
+    return {
+      //显示一页时自动隐藏。
+      value: false
+
+    };
   },
   methods: {
-    rowClick(row)
-    {
-     console.log("row:" + row);
-     this.$router.push({
+    rowClick(row) {
+      console.log("row:" + row);
+      this.$router.push({
         path: "/showdetail",
         query: { id: row.Filepath },
       });
@@ -98,10 +102,10 @@ export default {
           });
         })
         .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除",
-          });
+          // this.$message({
+          //   type: "info",
+          //   message: "已取消删除",
+          // });
         });
     },
 
@@ -118,6 +122,7 @@ export default {
 </script>
 
 <style  scoped>
+
 .el-table .warning-row {
   background: oldlace;
 }

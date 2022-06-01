@@ -85,4 +85,8 @@ export default {
 </script>
 
 <style  scoped>
+
+.demo-form-inline {
+  margin-top: 20px;
+}
 </style>

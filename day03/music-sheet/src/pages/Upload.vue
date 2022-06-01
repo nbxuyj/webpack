@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="form" :model="form" label-width="80px" @submit.native.prevent>
+    <el-form ref="form" :model="form" label-width="80px" @submit.native.prevent class="top20">
       <el-form-item label="歌名">
         <el-input v-model="form.gqName"></el-input>
       </el-form-item>
@@ -138,3 +138,10 @@ export default {
   },
 };
 </script>
+
+<style  scoped>
+
+.top20 {
+  margin-top: 20px;
+}
+</style>
