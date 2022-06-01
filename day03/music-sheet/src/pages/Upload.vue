@@ -8,7 +8,7 @@
         <el-input v-model="form.gsName"></el-input>
       </el-form-item>
       <el-form-item label="文件名">
-        <el-input v-model="form.fileName"></el-input>
+        <el-input v-model="form.fileName" :disabled="edit"></el-input>
       </el-form-item>
 
       <el-form-item label="上传图片">
@@ -18,9 +18,11 @@
           :on-preview="handlePreview"
           :on-remove="handleRemove"
           :before-remove="beforeRemove"
-          :limit="1"
+          multiple
+          :limit="4"
           :on-exceed="handleExceed"
           :file-list="fileList"
+          :on-change="handleChange"
         >
           <el-button size="small" type="primary">点击上传</el-button>
           <div slot="tip" class="el-upload__tip">
@@ -43,6 +45,7 @@ export default {
   data() {
     return {
       showClass: false,
+      edit: true,
       form: {
         gqName: "",
         gsName: "",
@@ -61,36 +64,57 @@ export default {
         guid: this.form.guid,
       };
 
+      if ((this.form.fileName.length == 0)) {
+          this.$message("请上传文件！");
+          return;
+      }
+
       //console.log("准备提交："+dp.guid);
       this.axios({
         method: "Post",
         url: "/api/musicsheet/post",
         data: dp,
       }).then((p) => {
-         this.$message('Post保存成功！');
-         //this.$router.push({ path: "/find" });
-         this.form.gqName="";
-         this.form.gsName="";
-         this.form.fileName="";
-        
+        this.$message("Post保存成功！");
+        //this.$router.push({ path: "/find" });
+        this.form.gqName = "";
+        this.form.gsName = "";
+        this.form.fileName = "";
       });
     },
     handleRemove(file, fileList) {
       console.log(file, fileList);
+      this.updateList(file, fileList);
     },
     handlePreview(file) {
       console.log(file);
-      this.form.fileName = file.response;
+      //刷新文件名称。
+      //this.form.fileName = file.response;
     },
     handleExceed(files, fileList) {
       this.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
+        `当前限制选择 4 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
           files.length + fileList.length
         } 个文件`
       );
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
+    },
+    handleChange(file, fileList) {
+      this.updateList(file, fileList);
+    },
+    //更新，删除
+    updateList(file, fileList) {
+      console.log(file, fileList);
+      this.form.fileName = "";
+      for (var i = 0; i < fileList.length; i++) {
+        this.form.fileName = this.form.fileName + "," + fileList[i].response;
+      }
+
+      if (this.form.fileName.length > 0) {
+        this.form.fileName = this.form.fileName.substring(1);
+      }
     },
   },
 

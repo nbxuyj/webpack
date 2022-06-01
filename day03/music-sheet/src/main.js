@@ -31,7 +31,16 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
+//使用dayJS过滤器。
+var  dayjs=require('dayjs')
+Vue.prototype.dayjs=dayjs
 
+//使用：this.dayjs(val)
+//this.dayjs({{ModifyTime}}).format("YYYY-MM-DD HH:mm:ss")
+Vue.filter('dateFormat', function (time) {
+  const dtStr = dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+  return dtStr
+})
 
 
 new Vue({

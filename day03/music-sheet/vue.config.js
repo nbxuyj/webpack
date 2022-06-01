@@ -14,16 +14,16 @@ module.exports = defineConfig({
     // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#配置代理
     proxy: {
       '/api': {
-        target: 'http://pub.nbangsoft.com',
-       // target: 'http://localhost:13827',
+       //target: 'http://pub.nbangsoft.com',
+        target: 'http://localhost:13827',
         changeOrigin: true, //  是否跨域
         pathRewrite: {
           '^/api': '/api' //  重定向
         }
       },
       '/images': {
-        target: 'http://pub.nbangsoft.com/',
-        //target: 'http://localhost/',
+        //target: 'http://pub.nbangsoft.com/',
+        target: 'http://localhost/',
         changeOrigin: true, //  是否跨域
         pathRewrite: {
           '^/images': '/images' //  重定向

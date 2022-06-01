@@ -11,7 +11,7 @@
 
 
 
-      <el-table-column prop="ModifyTime" label="日期"> </el-table-column>
+      <el-table-column prop="ModifyTimeStr" label="日期"> </el-table-column>
   
 
       <el-table-column prop="GqName" label="歌名"> </el-table-column>
@@ -31,7 +31,7 @@
             >编辑</el-button
           >
           <el-button
-            @click="deleteClick(scope.$index, tableData)"
+            @click.stop="deleteClick(scope.$index, tableData)"
             type="text"
             size="small"
             >删除</el-button
