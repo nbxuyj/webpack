@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-table
+      v-loading="loading"
       :data="tableData"
       style="width: 100%"
       :row-class-name="tableRowClassName"
@@ -9,13 +10,13 @@
       <el-table-column prop="ModifyTimeStr" label="日期"> </el-table-column>
 
       <el-table-column prop="GqName" label="歌名"> </el-table-column>
-      <el-table-column prop="GsName" label="歌手"> </el-table-column>
+      <!-- <el-table-column prop="GsName" label="歌手"> </el-table-column> -->
 
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleClick(scope.$index, tableData)"
+          <!-- <el-button size="mini" @click="handleClick(scope.$index, tableData)"
             >查看</el-button
-          >
+          > -->
           <el-button size="mini" @click="editClick(scope.$index, tableData)"
             >编辑</el-button
           >
@@ -28,34 +29,44 @@
         </template>
       </el-table-column>
     </el-table>
- <el-switch v-model="value">
- </el-switch>
-<el-pagination
+    <el-switch v-model="value"> </el-switch>
+    <el-pagination
       :hide-on-single-page="value"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page.sync="currentPage2"
-      :page-sizes="[100, 200, 300, 400]"
-      :page-size="100"
-      layout="sizes, prev, pager, next"
-      :total="1">
+      :current-page="currentPage4"
+      :page-sizes="[10,30, 50, 100, 200]"
+      :page-size="10"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="totalSize"
+    >
     </el-pagination>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Show",
-  props: ["tableData"],
+  props: ["totalSize", "tableData"],
   components: {},
   data() {
     return {
       //显示一页时自动隐藏。
-      value: false
-
+      value: false,
+      currentPage4: 1,
+      loading: true
     };
   },
   methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.$emit('sizeChange',val)
+
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      this.$emit('currentChange',val)
+    },
+
     rowClick(row) {
       console.log("row:" + row);
       this.$router.push({
@@ -118,11 +129,17 @@ export default {
       return "";
     },
   },
+  updated() {
+    //console.log("show数据发生改变" + this.totalParam);
+    this.loading=false;
+  },
+  beforeUpdate() {
+    //console.log("show数据发生之前：" + this.totalParam);
+  },
 };
 </script>
 
 <style  scoped>
-
 .el-table .warning-row {
   background: oldlace;
 }
