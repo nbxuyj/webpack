@@ -22,6 +22,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 //引入的是插件，需要use.
 Vue.use(ElementUI);
 
+//引入icons
+import './icons';
 
 //默认index.js可以省略。
 import router from './router'

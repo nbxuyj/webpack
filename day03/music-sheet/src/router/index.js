@@ -27,7 +27,7 @@ import Upload from "../pages/Upload.vue";
 import Find from "../pages/Find.vue";
 import ShowDetail from "../pages/ShowDetail.vue";
 
-
+import Login from "../pages/login/index.vue"
 
 
 
@@ -45,7 +45,14 @@ export default new VueRouter({
       //请求路由的路径
       path: '/find',
       //当前路由的组件。
-      component: Find
+      component: Login
+
+    },
+    {
+      //请求路由的路径
+      path: '/login',
+      //当前路由的组件。
+      component: Login
 
     },
     {
