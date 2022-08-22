@@ -11,6 +11,7 @@
     >
       <el-menu-item index="1">歌词查询</el-menu-item>
       <el-menu-item index="2">歌词上传</el-menu-item>
+      <el-menu-item index="3">视频上传</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -31,12 +32,18 @@ export default {
         if (this.$route.path != "/upload") {
           this.$router.push("/upload");
         }
-      } else {
+      } else if(key === "1") {
         console.log("点击查询:" + this.$route.path);
         //歌词上传
         if (this.$route.path != "/") {
           this.$router.push("/");
         }
+      }else
+      {
+       if (this.$route.path != "/uploadVedio") {
+          this.$router.push("/uploadVedio");
+        }
+
       }
     },
   },

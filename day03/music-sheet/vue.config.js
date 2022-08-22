@@ -61,7 +61,7 @@ module.exports = defineConfig({
         }
       },
       '/images': {
-        // target: 'http://pub.nbangsoft.com/',
+        //target: 'http://pub.nbangsoft.com/',
         target: 'http://localhost/',
         changeOrigin: true, //  是否跨域
         pathRewrite: {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr=[
+        {id:1,name:'西瓜',state:true,price:10,count:1},
+        {id:2,name:'榴莲',state:true,price:80,count:5},
+        {id:3,name:'草莓',state:true,price:30,count:2}
+        ]
+        //需求：将购物中已勾选的水果总价累加起来。
+        // 方案1：采用forEach
+        // let amt=0
+        // arr.filter(item=>item.state).forEach((item)=>{
+        //         amt+=item.price*item.count;
+        // })
+        // console.log(amt);
+
+        // 方案2：采用reduce.
+        // arr.filter(item=>item.state).reduce((累加的结果，当前循环项)=>{},初始值)
+        // const result=  arr.filter(item=>item.state).reduce((amt,item)=>{
+        //    return amt+= item.price*item.count
+        // },0)
+        // console.log(result);
+
+        // 方案3： 简写。
+        const result=  arr.filter(item=>item.state).reduce((amt,item)=>amt+= item.price*item.count,0)
+        console.log(result);
+    </script>
+</body>
+</html>

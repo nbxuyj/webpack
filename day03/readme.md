@@ -36,6 +36,8 @@
 1. 调用 axios 之后，使用 async/await 进行简化
 2. 使用 async/await 进行简化.
 
+
+
 ## vue-cli介绍与安装
 
 1. 创建项目：vue create demo-frist
@@ -51,3 +53,10 @@
 3. then用起来麻烦, 加上await则返回真实数据。
 4. 如果传参，直接对象传，不通过JSON.stringify转换，则Content-Type 不需要指定。
 5. Post传参数，如果指定  'Content-Type': 'application/json'，则对象必须要通过JSON.stringify转换
+
+## 23.vue组件的三个部分
+
+2022年8月8日, AM 06:14:18
+1.怎样创建和使用组件。
+
+

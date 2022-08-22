@@ -26,6 +26,8 @@ import Show from "../pages/Show.vue";
 import Upload from "../pages/Upload.vue";
 import Find from "../pages/Find.vue";
 import ShowDetail from "../pages/ShowDetail.vue";
+import UploadVedio from "../pages/UploadVedio.vue";
+
 
 import Login from "../pages/login/index.vue"
 
@@ -60,6 +62,12 @@ export default new VueRouter({
       path: '/upload',
       //当前路由的组件。
       component: Upload
+
+    }, {
+      //请求路由的路径
+      path: '/uploadVedio',
+      //当前路由的组件。
+      component: UploadVedio
 
     },
     {
