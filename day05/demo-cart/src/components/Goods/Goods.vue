@@ -25,7 +25,7 @@
         <!-- 商品价格 -->
         <span class="goods-price">￥{{ price }}</span>
         <!-- 商品的数量 -->
-        <Counter :num="count"></Counter>
+        <Counter :num="count" :id="id"></Counter>
       </div>
     </div>
   </div>
@@ -39,6 +39,10 @@ export default {
   name: "Goods",
   components: {
     Counter,
+  },
+  created(){
+
+console.log("count:"+this.count);
   },
   props: {
     id: {
