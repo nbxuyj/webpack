@@ -25,7 +25,7 @@
         <!-- 商品价格 -->
         <span class="goods-price">￥{{ price }}</span>
         <!-- 商品的数量 -->
-        <Counter></Counter>
+        <Counter :num="count"></Counter>
       </div>
     </div>
   </div>
@@ -37,9 +37,9 @@ import Counter from "@/components/Counter/Counter.vue";
 
 export default {
   name: "Goods",
-      components: {
-Counter
-    },
+  components: {
+    Counter,
+  },
   props: {
     id: {
       require: true,
@@ -65,6 +65,10 @@ Counter
     state: {
       default: true,
       type: Boolean,
+    },
+    count: {
+      default: 1,
+      type: Number,
     },
   },
   methods: {
