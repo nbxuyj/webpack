@@ -7,11 +7,11 @@
         <input
           type="checkbox"
           class="custom-control-input"
-          :id="'cb'+id"
+          :id="'cb' + id"
           :checked="state"
           @change="stateChange"
         />
-        <label class="custom-control-label" :for="'cb'+id">
+        <label class="custom-control-label" :for="'cb' + id">
           <!-- 商品的缩略图 -->
           <img :src="pic" alt="" />
         </label>
@@ -25,6 +25,7 @@
         <!-- 商品价格 -->
         <span class="goods-price">￥{{ price }}</span>
         <!-- 商品的数量 -->
+        <Counter></Counter>
       </div>
     </div>
   </div>
@@ -32,8 +33,13 @@
 
 <script>
 import { type } from "os";
+import Counter from "@/components/Counter/Counter.vue";
 
 export default {
+  name: "Goods",
+      components: {
+Counter
+    },
   props: {
     id: {
       require: true,
@@ -68,6 +74,7 @@ export default {
       this.$emit("state-change", { id: this.id, value: newState });
     },
   },
+  //components: { Counter },
 };
 </script>
 
