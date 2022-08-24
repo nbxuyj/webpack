@@ -11,6 +11,7 @@
       :price="item.goods_price"
       :state="item.goods_state"
       @state-change="getNewState"
+      :count="item.goods_count"
     ></Goods>
     <!-- Footer区域 -->
     <Footer :isfull="fullState"></Footer>
@@ -58,6 +59,14 @@ export default {
         bus.$on("share", (val) => {
       console.log("app组件中接收到的值：");
       console.log(val);
+     this.list.some(item=>{
+        if(item.id==val.id)
+        {
+          item.goods_count=val.value;
+          return true;
+        }
+
+      });
     });
   },
 
