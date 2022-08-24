@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { builtinModules } from "module";
 import bus from '@/components/eventBus.js'
 export default {
   props: {
