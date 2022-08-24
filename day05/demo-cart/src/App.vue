@@ -22,6 +22,7 @@ import axios from "axios";
 import Header from '@/components/Header/Header.vue';
 import Goods from '@/components/Goods/Goods.vue';
 import Footer from '@/components/Footer/Footer.vue'
+import bus from '@/components/eventBus.js'
 
 export default {
   components: { Header, Goods, Footer },
@@ -54,6 +55,10 @@ export default {
     // 调用请求数据的方法。
     this.initCartList();
     //this.title=this.list.length;
+        bus.$on("share", (val) => {
+      console.log("app组件中接收到的值：");
+      console.log(val);
+    });
   },
 
   methods: {
